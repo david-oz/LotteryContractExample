@@ -6,7 +6,7 @@ contract Lottery {
     mapping(uint => address) users;
     uint nbUsers = 0;
     uint totalBets = 0;
-
+    event Logger(string, address, uint );
     address owner;
 
     constructor () public {
@@ -21,6 +21,7 @@ contract Lottery {
             }
             usersBet[msg.sender] += msg.value;
             totalBets += msg.value;
+            emit Logger("new bet", msg.sender, msg.value);
         }
     }
     
@@ -31,6 +32,7 @@ contract Lottery {
             for (uint i=0; i < nbUsers; i++) {
                 sum += usersBet[users[i]];
                 if (sum >= winningNumber) {
+                    emit Logger("Lottery ended", users[i], totalBets);
                     selfdestruct(users[i]);
                     return;
                 }
@@ -38,4 +40,5 @@ contract Lottery {
         }
     }
     
+
 }
