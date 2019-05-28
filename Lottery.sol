@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.25;
 
 contract Lottery {
 
@@ -13,7 +13,7 @@ contract Lottery {
         owner = msg.sender;
     }
     
-    function placeBet() public payable  {
+    function bet() public payable  {
         if (msg.value > 0) {
             if (usersBet[msg.sender] == 0) {
                 users[nbUsers] = msg.sender;
