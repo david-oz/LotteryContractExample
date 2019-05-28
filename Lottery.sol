@@ -13,7 +13,7 @@ contract Lottery {
         owner = msg.sender;
     }
     
-    function bet() public payable  {
+    function placeBet() public payable  {
         if (msg.value > 0) {
             if (usersBet[msg.sender] == 0) {
                 users[nbUsers] = msg.sender;
