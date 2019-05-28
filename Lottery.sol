@@ -13,7 +13,7 @@ contract Lottery {
         owner = msg.sender;
     }
     
-    function Bet() public payable  {
+    function bet() public payable  {
         if (msg.value > 0) {
             if (usersBet[msg.sender] == 0) {
                 users[nbUsers] = msg.sender;
@@ -25,7 +25,7 @@ contract Lottery {
         }
     }
     
-    function EndLottery() public {
+    function endLottery() public {
         if (msg.sender == owner) {
             uint sum = 0;
             uint winningNumber = uint(blockhash(block.number-1)) % totalBets + 1;
